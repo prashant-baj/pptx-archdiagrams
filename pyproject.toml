@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "archdiagrams"
+version = "0.1.0"
+description = "Editable architecture diagrams for PowerPoint: zones, icon cards, arrows and step badges as native shapes, from YAML or Python."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.9"
+authors = [{ name = "Prashant Baj" }]
+keywords = ["powerpoint", "pptx", "architecture", "diagram", "aws", "azure", "python-pptx"]
+classifiers = ["Programming Language :: Python :: 3", "License :: OSI Approved :: MIT License", "Topic :: Office/Business :: Office Suites"]
+dependencies = ["python-pptx>=0.6.21", "lxml>=4.9", "Pillow>=9.0", "PyYAML>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+
+[project.scripts]
+archdiagrams = "archdiagrams.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+archdiagrams = ["icons/**/*.png", "icons/general/SOURCES.json"]

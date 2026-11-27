@@ -1,0 +1,24 @@
+# Two designs side by side, each with a question to think about.
+theme: default
+size: [14, 5.6]
+slide:
+  title: Two designs for the same need
+elements:
+  - zone: {id: A, at: [0, 0, 6.8, 5.6], label: Design A · central, color: navy}
+  - card: {id: hub, at: [2.0, 0.6, 2.8, 1.0], icon: server, title: Central service, color: navy, emphasis: true}
+  - card: {id: s1, at: [0.3, 3.0, 1.9, 0.9], icon: building, title: Site 1}
+  - card: {id: s2, at: [2.45, 3.0, 1.9, 0.9], icon: building, title: Site 2}
+  - card: {id: s3, at: [4.6, 3.0, 1.9, 0.9], icon: building, title: Site N}
+  - arrow: {from: hub.b, to: s1.t, both: true, color: navy, route: straight}
+  - arrow: {from: hub.b, to: s2.t, both: true, color: navy, route: straight}
+  - arrow: {from: hub.b, to: s3.t, both: true, color: navy, route: straight}
+  - note: {at: [0.3, 4.4, 6.2, 0.6], text: "Think about: what happens when sites double?", color: orange, bold: true, italic: false}
+  - zone: {id: B, at: [7.2, 0, 6.8, 5.6], label: Design B · event-driven, color: teal}
+  - card: {id: br, at: [9.2, 1.6, 2.8, 0.9], icon: stream, title: Event broker, color: blue, emphasis: true}
+  - card: {id: t1, at: [7.5, 3.0, 1.9, 0.9], icon: gateway, title: Site 1}
+  - card: {id: t2, at: [9.65, 3.0, 1.9, 0.9], icon: gateway, title: Site 2}
+  - card: {id: t3, at: [11.8, 3.0, 1.9, 0.9], icon: gateway, title: Site N}
+  - arrow: {from: t1.t, to: br.b, color: teal, route: straight}
+  - arrow: {from: t2.t, to: br.b, color: teal, route: straight}
+  - arrow: {from: t3.t, to: br.b, color: teal, route: straight}
+  - note: {at: [7.5, 4.4, 6.2, 0.6], text: "Think about: how do you spot a silent device?", color: orange, bold: true, italic: false}

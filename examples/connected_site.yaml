@@ -1,0 +1,40 @@
+# Connected data centre: one UPS event through device, edge, cloud and people.
+# General icons, navy theme.
+theme: navy
+size: [14.2, 5.6]
+slide:
+  eyebrow: A connected product, layer by layer
+  title: "Real-world flow: one UPS event, end to end"
+  caption: 1 UPS on battery → 2 gateway sends it out → 3 joined with history → 4 decide → 5 operator acts → 6 outcome recorded
+  notes: Follow the numbers. If the cloud is down, the site still runs.
+elements:
+  - zone: {id: site, at: [0, 0, 3.05, 5.6], label: Site · devices, color: navy, card_h: 0.82, align: spread,
+           cards: [{id: brk, icon: breaker, title: Switchgear & breakers, sub: Modbus TCP},
+                   {id: ups, icon: ups, title: UPS, sub: SNMP · Modbus},
+                   {id: pdu, icon: pdu, title: Rack PDUs, sub: SNMP},
+                   {id: mtr, icon: meter, title: Power meters, sub: Modbus},
+                   {id: cool, icon: cooling, title: Cooling, sub: BACnet}]}
+  - zone: {id: edge, at: [3.4, 0, 2.75, 5.6], label: Site · edge, color: teal}
+  - card: {id: gw, at: [3.55, 0.5, 2.45, 1.0], icon: gateway, title: Site gateway, sub: outbound · store and forward, color: teal}
+  - card: {id: local, at: [3.55, 3.3, 2.45, 1.0], icon: dashboard, title: Local operator screen, sub: works offline, color: teal}
+  - bus: {from: [brk, ups, pdu, mtr, cool], to: gw.l@0.5, color: navy, gap: 0.17}
+  - arrow: {from: gw.b, to: local.t, color: teal, both: true, label: "cloud down? site still runs", label_w: 1.3}
+  - zone: {id: cloud, at: [6.5, 0, 4.6, 5.6], label: Cloud platform, color: blue}
+  - card: {id: stream, at: [6.65, 0.5, 2.1, 1.0], icon: stream, title: Event stream, sub: MQTT over TLS, color: blue}
+  - card: {id: upd, at: [8.85, 0.5, 2.1, 1.0], icon: update, title: Device updates, sub: signed firmware, color: blue}
+  - card: {id: hist, at: [6.65, 1.95, 2.1, 1.0], icon: database, title: History, sub: one data model, color: blue}
+  - card: {id: rules, at: [8.85, 1.95, 2.1, 1.0], icon: ai, title: Rules & analytics, sub: "normal or risk?", color: blue}
+  - card: {id: audit, at: [6.65, 3.4, 2.1, 1.0], icon: lock, title: Audit log, sub: who · what · when, color: blue}
+  - card: {id: fapi, at: [8.85, 3.4, 2.1, 1.0], icon: api, title: Fleet API, sub: REST · versioned, color: blue}
+  - arrow: {from: gw.r, to: stream.l, color: teal}
+  - arrow: {from: stream.b, to: hist.t, color: blue}
+  - arrow: {from: hist.r, to: rules.l, color: blue}
+  - arrow: {from: rules.b@0.2, to: audit.t@0.8, color: blue, dashed: true, route: straight}
+  - zone: {id: ppl, at: [11.45, 0, 2.75, 5.6], label: People & systems, color: orange}
+  - card: {id: tech, at: [11.6, 0.5, 2.45, 1.0], icon: engineer, title: Service technician, sub: mobile work order, color: orange}
+  - card: {id: ops, at: [11.6, 1.95, 2.45, 1.0], icon: alert, title: Operations centre, sub: alert + action, color: orange}
+  - card: {id: erp, at: [11.6, 3.4, 2.45, 1.0], icon: briefcase, title: Service / ERP, sub: via the API, color: orange}
+  - arrow: {from: rules.r, to: ops.l, color: orange}
+  - arrow: {from: rules.r@0.25, to: tech.l@0.7, color: orange, dashed: true, route: straight}
+  - arrow: {from: fapi.r, to: erp.l, color: grey}
+  - badges: [[ups, 1], [gw, 2], [hist, 3], [rules, 4], [ops, 5], [audit, 6]]

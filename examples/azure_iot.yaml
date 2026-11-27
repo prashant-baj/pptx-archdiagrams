@@ -1,0 +1,32 @@
+# IoT telemetry on Azure, from devices to dashboards.
+theme: azure
+size: [14.2, 5.6]
+slide:
+  title: Device telemetry on Azure
+  caption: Hot path for alerts in seconds; cold path for history and reports.
+elements:
+  - zone: {id: field, at: [0, 0, 2.9, 5.6], label: Field, color: grey,
+           cards: [{id: dev, icon: sensor, title: Devices, sub: MQTT · TLS},
+                   {id: edge, icon: azure/iot-edge, title: IoT Edge, sub: local rules}]}
+  - zone: {id: ingest, at: [3.3, 0, 2.6, 5.6], label: Ingest, color: blue, align: middle, card_h: 1.1,
+           cards: [{id: hub, icon: azure/iot-hub, title: IoT Hub, sub: device identity},
+                   {id: dps, icon: azure/key-vaults, title: Key Vault, sub: certificates}]}
+  - zone: {id: hot, at: [6.3, 0, 4.0, 2.6], label: Hot path, color: orange}
+  - card: {id: asa, at: [6.45, 0.6, 1.85, 1.1], icon: azure/stream-analytics, title: Stream Analytics, title_size: 12}
+  - card: {id: fn, at: [8.35, 0.6, 1.8, 1.1], icon: azure/function-apps, title: Functions, sub: alerts}
+  - zone: {id: cold, at: [6.3, 3.0, 4.0, 2.6], label: Cold path, color: teal}
+  - card: {id: adls, at: [6.45, 3.6, 1.85, 1.1], icon: azure/data-lake-storage, title: Data Lake, sub: raw history}
+  - card: {id: cos, at: [8.35, 3.6, 1.8, 1.1], icon: azure/cosmos-db, title: Cosmos DB, sub: device state}
+  - zone: {id: use, at: [10.7, 0, 3.5, 5.6], label: Use, color: purple,
+           cards: [{id: tw, icon: azure/digital-twins, title: Digital Twins, sub: site model},
+                   {id: bi, icon: azure/power-bi, title: Power BI, sub: reports},
+                   {id: mon, icon: azure/monitor, title: Azure Monitor, sub: health}]}
+  - arrow: {from: dev.r, to: hub.l, color: navy}
+  - arrow: {from: dev.b, to: edge.t, color: grey, both: true}
+  - arrow: {from: hub.r, to: asa.l, color: orange}
+  - arrow: {from: asa.r, to: fn.l, color: orange}
+  - arrow: {from: hub.r@0.7, to: adls.l, color: teal}
+  - arrow: {from: adls.r, to: cos.l, color: teal}
+  - arrow: {from: fn.r, to: tw.l, color: purple}
+  - arrow: {from: cos.r, to: bi.l, color: purple}
+  - arrow: {from: dps.t, to: hub.b, color: grey, dashed: true}

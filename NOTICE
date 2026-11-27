@@ -1,0 +1,14 @@
+archdiagrams - third-party material
+
+1. General icon pack (src/archdiagrams/icons/general)
+   Rendered from react-icons. Mapping of each file to its source icon: icons/general/SOURCES.json
+   - Tabler Icons (names starting "Tb"), Copyright (c) 2020-2024 Paweł Kuna, MIT License, https://github.com/tabler/tabler-icons
+   - Material Design Icons (names starting "Md"), Copyright Google LLC, Apache License 2.0, https://github.com/google/material-design-icons
+
+2. Provider icons (src/archdiagrams/icons/<provider>: aws, azure, gcp, k8s, onprem, saas, ibm, oci, ...)
+   Copied from the "diagrams" project, https://github.com/mingrammer/diagrams, MIT License,
+   Copyright (c) 2020 MinJae Kwon (mingrammer), and resized to 128 px by tools/build_provider_icons.py.
+   The icons and the product names are trademarks of their owners (Amazon Web Services, Microsoft, Google,
+   the Cloud Native Computing Foundation, IBM, Oracle, Alibaba and others). They are included only so diagrams
+   can depict those products; no endorsement is implied. When you publish diagrams that use them, follow the
+   owner's architecture-icon guidelines (for example, the AWS Architecture Icons and Azure architecture icons terms).

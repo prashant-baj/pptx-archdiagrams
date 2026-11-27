@@ -1,0 +1,25 @@
+# Left-to-right tiers: users -> edge -> application -> data. Coordinates are inches inside `size`.
+theme: default
+size: [14, 5.6]
+slide:
+  title: Solution architecture
+  caption: One line that says what the reader should notice.
+elements:
+  - zone: {id: users, at: [0, 0, 2.8, 5.6], label: Users, color: teal,
+           cards: [{id: staff, icon: users, title: Staff, sub: HTTPS},
+                   {id: admin, icon: admin, title: Admins, sub: HTTPS · MFA},
+                   {id: mob, icon: mobile, title: Mobile app, sub: HTTPS}]}
+  - zone: {id: edge, at: [3.3, 0, 2.6, 5.6], label: Edge, color: orange,
+           cards: [{id: waf, icon: firewall, title: WAF / proxy, sub: TLS · rate limit},
+                   {id: iam, icon: identity, title: Identity, sub: OIDC · MFA}]}
+  - zone: {id: app, at: [6.4, 0, 3.6, 5.6], label: Application, color: blue, cols: 1,
+           cards: [{id: api, icon: api, title: API services, sub: REST},
+                   {id: jobs, icon: queue, title: Background jobs, sub: queue}]}
+  - zone: {id: data, at: [10.5, 0, 3.5, 5.6], label: Data, color: green,
+           cards: [{id: db, icon: database, title: Database, sub: primary + replica},
+                   {id: files, icon: storage, title: Object storage, sub: documents}]}
+  - bus: {from: [staff, admin, mob], to: waf, color: teal}
+  - arrow: {from: waf.r, to: api.l, color: blue}
+  - arrow: {from: iam.r, to: api.l@0.7, color: orange, dashed: true}
+  - arrow: {from: api.r, to: db.l, color: green}
+  - arrow: {from: jobs.r, to: files.l, color: green}
